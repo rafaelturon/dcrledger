@@ -115,12 +115,6 @@ func startServer() {
 		AllowedOrigins: corsArray,
 	})
 
-	// Create static route negroni handler
-	router.PathPrefix("/web").Handler(negroni.New(
-		negroni.NewStatic(http.Dir(".")),
-		negroni.Wrap(sRoutes),
-	))
-
 	// Create a new negroni for the api middleware
 	router.PathPrefix("/api").Handler(negroni.New(
 		negroni.HandlerFunc(validateTokenMiddleware),
