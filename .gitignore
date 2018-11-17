@@ -1,0 +1,18 @@
+# Log files
+*.log
+
+# Binaries
+dcrd-pi
+debug
+*.bin
+
+# Certificates
+*.rsa
+*.rsa.pub
+*.cert
+*.key
+
+#MacOS
+.DS_Store
+
+decred-pi-wallet
