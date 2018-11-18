@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-DECRED_RELEASE=v1.0.3
+DECRED_RELEASE=v1.3.0
 
 DIST=decred-linux-arm-$DECRED_RELEASE
 TARBALL=$DIST.tar.gz
@@ -12,17 +12,14 @@ sudo apt-get update
 sudo apt-get -qy dist-upgrade
 
 # install required packages
-sudo apt-get -qy install rng-tools rpi-update jq
+sudo apt-get -qy install rng-tools jq
 
 # set up hardware RNG generator
 # http://fios.sector16.net/hardware-rng-on-raspberry-pi/
 echo 'HRNGDEVICE=/dev/hwrng' | sudo tee -a /etc/default/rng-tools
 echo bcm2708_rng | sudo tee -a /etc/modules
-# update kernel to latest, this includes the RNG driver as well
-sudo rpi-update
 
 # create & populate decred configuration directories
-
 mkdir ~/.dcrd ~/.dcrwallet ~/.dcrctl
 
 RPC_PASSWORD=$(openssl rand -hex 32)

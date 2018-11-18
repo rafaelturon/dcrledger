@@ -4,9 +4,9 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/rafaelturon/decred-pi-wallet/cmd/decredservices"
-	"github.com/rafaelturon/decred-pi-wallet/cmd/muxservice"
-	"github.com/rafaelturon/decred-pi-wallet/config"
+	"github.com/rafaelturon/dcrledger/cmd/decredservices"
+	"github.com/rafaelturon/dcrledger/cmd/muxservice"
+	"github.com/rafaelturon/dcrledger/config"
 )
 
 var cfg *config.Config
@@ -35,6 +35,7 @@ func main() {
 	if err := dcrpMain(); err != nil {
 		os.Exit(1)
 	}
+	muxservice.TestServer(cfg)
 
 	client, err := decredservices.Start(cfg)
 	if err != nil {
