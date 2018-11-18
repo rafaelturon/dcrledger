@@ -15,7 +15,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/dgrijalva/jwt-go/request"
 	"github.com/gorilla/mux"
-	"github.com/rafaelturon/decred-pi-wallet/config"
+	"github.com/rafaelturon/dcrledger/config"
 	"github.com/rs/cors"
 	"github.com/sec51/twofactor"
 	"github.com/urfave/negroni"
@@ -98,9 +98,6 @@ func startServer() {
 	router := mux.NewRouter()
 	router.HandleFunc("/about", aboutHandler)
 	router.HandleFunc("/login", loginHandler)
-
-	// Static route
-	sRoutes := mux.NewRouter().PathPrefix("/web").Subrouter().StrictSlash(true)
 
 	// API middleware
 	apiRoutes := mux.NewRouter().PathPrefix("/api").Subrouter().StrictSlash(true)

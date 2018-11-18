@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/decred/dcrd/rpcclient"
-	"github.com/rafaelturon/decred-pi-wallet/config"
+	"github.com/rafaelturon/dcrledger/config"
 )
 
 var (
